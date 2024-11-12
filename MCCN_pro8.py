@@ -1,23 +1,5 @@
 # -*- coding: utf-8 -*-
 # multiscale cross-attention convolutional network
-# 日期：2023.10.13
-# 使用金字塔多尺度卷积和交叉注意力机制，实现HSI和Lidar图像的特征融合
-# 2023.10.16
-# 改进方向：1.测试不同的激活函数，如Swish、ReLU等；2.测试不同的注意力机制，如Self-Attention、Cross-Attention等
-# 3.cross-attention中的多头数和中间维度可以设置不同的值 4.可以设置可学习参数，alf*HSI_feature+beta*Lidar_feature
-# 5.可以减少卷积层数，减少参数数量，提高计算效率
-# 2023.10.20
-# 总结一下这个网络：HSI用双分支多尺度卷积处理，生成光谱和空间特征
-# Lidar用多尺度空间卷积处理，生成空间特征
-# 用2个互注意力去处理生成的三个特征：HIS空间+HSI光谱，Lidar空间+HSI光谱
-# 然后用1个互注意力处理这2个特征
-# 然后cat这HIS空间+HSI光谱和刚才生成的那个特征
-# 最后用一个分类模块去生成分类结果
-
-# 2023年11月25,这是在论文中最终使用的版本
-# 根据这个版本，后面写几个消融实验
-# 2024.0728
-# 在原有版本pro4的基础上，添加了参数共享
 
 import torch
 import torch.nn as nn
